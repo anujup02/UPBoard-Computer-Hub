@@ -1,16 +1,30 @@
 body {
-  font-family: Arial;
-  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
   background: #f4f6f8;
+  text-align: center;
 }
 
-h1 {
-  color: #1a237e;
+header {
+  background: #1a237e;
+  color: white;
+  padding: 15px;
+}
+
+nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cards {
+  margin: 30px;
 }
 
 .cards a {
   display: inline-block;
-  margin: 15px;
+  margin: 10px;
   padding: 15px 25px;
   background: #3949ab;
   color: white;
@@ -24,6 +38,18 @@ h1 {
 
 footer {
   margin-top: 40px;
+  padding: 10px;
   color: gray;
 }
 
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 8px;
+  }
+
+  .cards a {
+    width: 80%;
+  }
+}
