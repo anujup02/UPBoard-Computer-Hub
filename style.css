@@ -164,3 +164,8 @@ body {
         font-size: 2.3rem;
     }
 }
+.dropdown-content.show {
+    opacity: 1;
+    visibility: visible;
+    top: 105%;
+}
