@@ -1,93 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Previous Year Questions (PYQ)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            margin: 0;
-            padding: 20px;
-        }
+<meta charset="UTF-8">
+<title>PYQ – MCQs</title>
 
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    display: flex;
+}
 
-        .question-box {
-            background: #ffffff;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
+/* Sidebar */
+.sidebar {
+    width: 320px;
+    background: #2c3e50;
+    color: white;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 15px;
+}
 
-        .question {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-        .options label {
-            display: block;
-            margin-bottom: 6px;
-            cursor: pointer;
-        }
+.topic {
+    margin-top: 15px;
+    font-weight: bold;
+}
 
-        .options input {
-            margin-right: 8px;
-        }
+.subtopic {
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #777;
-            font-size: 14px;
-        }
-    </style>
+.subtopic:hover {
+    background: #34495e;
+    border-radius: 4px;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.question-box {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.options label {
+    display: block;
+    margin: 6px 0;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Previous Year Questions (MCQs)</h1>
+<!-- LEFT SIDEBAR -->
+<div class="sidebar">
+    <h2>PYQ Topics</h2>
 
-<!-- Question 1 -->
-<div class="question-box">
-    <div class="question">Q1. Which protocol is used to send emails?</div>
-    <div class="options">
-        <label><input type="radio" name="q1"> HTTP</label>
-        <label><input type="radio" name="q1"> FTP</label>
-        <label><input type="radio" name="q1"> SMTP</label>
-        <label><input type="radio" name="q1"> POP3</label>
-    </div>
+    <div class="topic">1. Computer Fundamentals</div>
+    <div class="subtopic" onclick="loadMCQ('intro')">1.1 Introduction to Computer</div>
+    <div class="subtopic" onclick="loadMCQ('types')">1.2 Types of Computers</div>
+    <div class="subtopic" onclick="loadMCQ('hardware')">1.3 Hardware & Software</div>
+    <div class="subtopic" onclick="loadMCQ('number')">1.4 Number System</div>
+    <div class="subtopic" onclick="loadMCQ('binaryop')">1.6 Binary Operations</div>
+    <div class="subtopic" onclick="loadMCQ('logic')">1.7 Logical Operators</div>
+
+    <div class="topic">2. Operating System</div>
+    <div class="subtopic" onclick="loadMCQ('osintro')">2.1 OS Introduction</div>
+    <div class="subtopic" onclick="loadMCQ('linux')">2.3 Linux Basics</div>
+    <div class="subtopic" onclick="loadMCQ('commands')">2.5 Linux Commands</div>
+
+    <div class="topic">3. Office Tools</div>
+    <div class="subtopic" onclick="loadMCQ('word')">3.1 Word Processing</div>
+    <div class="subtopic" onclick="loadMCQ('ppt')">3.2 Presentation</div>
+    <div class="subtopic" onclick="loadMCQ('excel')">3.3 Spreadsheet</div>
+
+    <div class="topic">4. Programming</div>
+    <div class="subtopic" onclick="loadMCQ('algo')">4.2 Algorithm & Flowchart</div>
+
+    <div class="topic">5. Networking</div>
+    <div class="subtopic" onclick="loadMCQ('network')">5.4 Types of Network</div>
 </div>
 
-<!-- Question 2 -->
-<div class="question-box">
-    <div class="question">Q2. What does CPU stand for?</div>
-    <div class="options">
-        <label><input type="radio" name="q2"> Central Processing Unit</label>
-        <label><input type="radio" name="q2"> Computer Processing Unit</label>
-        <label><input type="radio" name="q2"> Central Program Unit</label>
-        <label><input type="radio" name="q2"> Control Processing Unit</label>
-    </div>
+<!-- RIGHT CONTENT -->
+<div class="content">
+    <h2 id="heading">Select a topic to view MCQs</h2>
+    <div id="mcq-area"></div>
 </div>
 
-<!-- Question 3 -->
-<div class="question-box">
-    <div class="question">Q3. Which of the following is NOT an input device?</div>
-    <div class="options">
-        <label><input type="radio" name="q3"> Keyboard</label>
-        <label><input type="radio" name="q3"> Mouse</label>
-        <label><input type="radio" name="q3"> Scanner</label>
-        <label><input type="radio" name="q3"> Printer</label>
-    </div>
-</div>
+<script>
+function loadMCQ(topic) {
+    const mcqArea = document.getElementById("mcq-area");
+    mcqArea.innerHTML = "";
 
-<footer>
-    © 2026 | PYQ Practice Page
-</footer>
+    let data = {
+        intro: {
+            title: "Introduction to Computer",
+            questions: [
+                {
+                    q: "A computer is an ______ machine.",
+                    options: ["Electronic", "Mechanical", "Manual", "Biological"]
+                }
+            ]
+        },
+
+        types: {
+            title: "Types of Computers",
+            questions: [
+                {
+                    q: "Which is a supercomputer?",
+                    options: ["Laptop", "Cray", "Desktop", "Tablet"]
+                }
+            ]
+        },
+
+        hardware: {
+            title: "Hardware & Software",
+            questions: [
+                {
+                    q: "Which is system software?",
+                    options: ["Windows", "MS Word", "Excel", "Paint"]
+                }
+            ]
+        },
+
+        number: {
+            title: "Number System",
+            questions: [
+                {
+                    q: "Base of binary number system is?",
+                    options: ["2", "8", "10", "16"]
+                }
+            ]
+        },
+
+        binaryop: {
+            title: "Binary Operations",
+            questions: [
+                {
+                    q: "Binary addition of 1 + 1 equals?",
+                    options: ["10", "11", "1", "0"]
+                }
+            ]
+        },
+
+        logic: {
+            title: "Logical Operators",
+            questions: [
+                {
+                    q: "AND gate gives output 1 when:",
+                    options: ["Both inputs are 1", "Any input is 1", "Both are 0", "Any is 0"]
+                }
+            ]
+        },
+
+        osintro: {
+            title: "Operating System",
+            questions: [
+                {
+                    q: "Which is an operating system?",
+                    options: ["Linux", "Python", "HTML", "C"]
+                }
+            ]
+        },
+
+        linux: {
+            title: "Linux Basics",
+            questions: [
+                {
+                    q: "Linux is a ______ OS.",
+                    options: ["Open Source", "Paid", "Closed", "Private"]
+                }
+            ]
+        },
+
+        commands: {
+            title: "Linux Commands",
+            questions: [
+                {
+                    q: "Which command lists files?",
+                    options: ["ls", "cd", "rm", "mkdir"]
+                }
+            ]
+        },
+
+        word: {
+            title: "Word Processing",
+            questions: [
+                {
+                    q: "Which software is used for word processing?",
+                    options: ["MS Word", "Excel", "PowerPoint", "Paint"]
+                }
+            ]
+        },
+
+        ppt: {
+            title: "Presentation Software",
+            questions: [
+                {
+                    q: "PowerPoint is used for?",
+                    options: ["Presentations", "Calculations", "Coding", "Browsing"]
+                }
+            ]
+        },
+
+        excel: {
+            title: "Spreadsheet",
+            questions: [
+                {
+                    q: "Excel is mainly used for?",
+                    options: ["Calculations", "Drawing", "Typing", "Gaming"]
+                }
+            ]
+        },
+
+        algo: {
+            title: "Algorithm & Flowchart",
+            questions: [
+                {
+                    q: "Algorithm means?",
+                    options: ["Step-by-step solution", "Program", "Diagram", "Error"]
+                }
+            ]
+        },
+
+        network: {
+            title: "Types of Network",
+            questions: [
+                {
+                    q: "LAN stands for?",
+                    options: ["Local Area Network", "Large Area Network", "Long Area Network", "Logical Area Network"]
+                }
+            ]
+        }
+    };
+
+    document.getElementById("heading").innerText = data[topic].title;
+
+    data[topic].questions.forEach((item, index) => {
+        let box = `<div class="question-box">
+            <b>Q${index + 1}. ${item.q}</b>
+            <div class="options">
+                ${item.options.map(opt => `<label><input type="radio"> ${opt}</label>`).join("")}
+            </div>
+        </div>`;
+        mcqArea.innerHTML += box;
+    });
+}
+</script>
 
 </body>
 </html>
-
